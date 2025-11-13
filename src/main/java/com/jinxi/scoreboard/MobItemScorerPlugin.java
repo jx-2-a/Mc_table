@@ -15,7 +15,9 @@ public class MobItemScorerPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("MobItemScorer enabling...");
+        getLogger().info("计分板 启动中...");
+        this.saveDefaultConfig();
+        getLogger().info("配置文件 已加载！");
 
         // 创建或获取主 scoreboard 上的 objective
         ScoreboardManager mgr = Bukkit.getScoreboardManager();

@@ -1,0 +1,13 @@
+# Maven 编译输出
+target/
+
+# Java 编译文件
+*.class
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# 其他常见忽略
+*.log
+.DS_Store

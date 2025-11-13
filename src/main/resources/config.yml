@@ -1,0 +1,98 @@
+# Mob Statistics Plugin Configuration
+# 修改后使用 /mobstats reload 重载配置
+
+scoreboard:
+  # 计分板目标名称
+  objective_name: "points_stats"
+  # 是否显示计分板
+  visible: true
+  # 更新间隔（ticks，20 ticks = 1秒）
+  update_interval: 20
+  # 是否自动更新
+  auto_update: true
+  # 显示位置: SIDEBAR, BELOW_NAME, PLAYER_LIST
+  display_slot: "SIDEBAR"
+  # 计分板标题
+  title: "&d&l✦ &5计分榜 &d&l✦"
+
+
+messages:
+  # 消息配置
+  scoreboard_updated: "&a计分板已更新！"
+  config_reloaded: "&a配置重载成功！"
+  no_permission: "&c你没有权限执行此命令！"
+
+# 精英怪分数配置（基于 血量 + 攻击力*2 计算）
+boss_scores:
+  # 顶级Boss
+  WARDEN: 1000          # 血量500 + 攻击45*2=90 → 590 (标准化为1000)
+  ELDER_GUARDIAN: 800   # 血量80 + 攻击8*2=16 → 96 (标准化)
+  WITHER_SKELETON: 400  # 血量20 + 攻击8*2=16 → 36 (标准化)
+  
+  # 高级精英
+  RAVAGER: 300          # 血量100 + 攻击12*2=24 → 124
+  EVOKER: 250           # 血量24 + 攻击6*2=12 → 36
+  BREEZE: 200           # 血量30 + 攻击?*2 → 估算
+  
+  # 中级精英
+  CREAKING: 150         # 新生物，估算
+  BLAZE: 120            # 血量20 + 攻击6*2=12 → 32
+  GUARDIAN: 100         # 血量30 + 攻击6*2=12 → 42
+  VINDICATOR: 90        # 血量24 + 攻击13*2=26 → 50
+  PILLAGER: 80          # 血量24 + 攻击5*2=10 → 34
+  
+  # 初级精英
+  ENDERMAN: 60          # 血量40 + 攻击7*2=14 → 54
+  WITCH: 50             # 血量26 + 攻击6*2=12 → 38
+  MAGMA_CUBE: 45        # 大号:16 + 攻击6*2=12 → 28
+  PHANTOM: 40           # 血量20 + 攻击6*2=12 → 32
+  HOGLIN: 35            # 血量40 + 攻击8*2=16 → 56
+  PIGLIN: 30            # 血量16 + 攻击5*2=10 → 26
+  ZOMBIFIED_PIGLIN: 25  # 血量20 + 攻击5*2=10 → 30
+  VEX: 20               # 血量14 + 攻击9*2=18 → 32
+  
+  # 普通怪物
+  ZOMBIE: 15            # 血量20 + 攻击3*2=6 → 26
+  SKELETON: 12          # 血量20 + 攻击2*2=4 → 24
+  CREEPER: 10           # 血量20 + 爆炸? → 估算
+  SPIDER: 8             # 血量16 + 攻击2*2=4 → 20
+  SLIME: 6              # 大号:16 + 攻击4*2=8 → 24
+  CAVE_SPIDER: 5        # 血量12 + 攻击2*2=4 → 16
+  SILVERFISH: 3         # 血量8 + 攻击1*2=2 → 10
+
+boss_names:
+  WARDEN: "守卫者"
+  ELDER_GUARDIAN: "远古守护者"
+  WITHER_SKELETON: "凋零骷髅"
+  RAVAGER: "劫掠兽"
+  EVOKER: "唤魔者"
+  BREEZE: "微风"
+  CREAKING: "吱吱作响者"
+  BLAZE: "烈焰人"
+  GUARDIAN: "守卫者"
+  VINDICATOR: "清道夫"
+  PILLAGER: "掠夺者"
+  ENDERMAN: "末影人"
+  WITCH: "女巫"
+  MAGMA_CUBE: "岩浆怪"
+  PHANTOM: "幻翼"
+  HOGLIN: "疣猪兽"
+  PIGLIN: "猪灵"
+  ZOMBIFIED_PIGLIN: "僵尸猪灵"
+  VEX: "恼鬼"
+  ZOMBIE: "僵尸"
+  SKELETON: "骷髅"
+  CREEPER: "苦力怕"
+  SPIDER: "蜘蛛"
+  SLIME: "史莱姆"
+  CAVE_SPIDER: "洞穴蜘蛛"
+  SILVERFISH: "银鱼"
+Material_value_map:
+  IRON_INGOT: 1           # 铁锭：1分
+  GOLD_INGOT: 10          # 金锭：10分
+  DIAMOND: 50           # 钻石：50分
+Material_value_name:
+  IRON_INGOT: "铁锭"
+  GOLD_INGOT: "金锭"
+  DIAMOND: "钻石"
+  
