@@ -3,7 +3,6 @@ main: com.jinxi.scoreboard.MobItemScorerPlugin
 version: 1.0
 api-version: 1.21
 commands:
-  mobscore:
-    description: Manage test mob/item scores
-    usage: /mobscore <add|set|get> <player> [amount]
-    permission: mobscore.use
+  score_table:
+    description: 控制个人计分板
+    usage: /score_table <on|off|rule>

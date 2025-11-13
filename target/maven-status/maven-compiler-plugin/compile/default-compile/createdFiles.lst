@@ -1,1 +1,5 @@
+com\jinxi\scoreboard\listener\ScoreListener.class
+com\jinxi\scoreboard\style_board\table_type$1.class
+com\jinxi\scoreboard\data_center\PlayerStats.class
+com\jinxi\scoreboard\style_board\table_type.class
 com\jinxi\scoreboard\MobItemScorerPlugin.class
