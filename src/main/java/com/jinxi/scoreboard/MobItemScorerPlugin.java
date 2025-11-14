@@ -135,6 +135,7 @@ public void saveAllStats() {
     }
     try {
         cfg.save(new File(getDataFolder(), "players.yml"));
+        getLogger().severe("保存玩家数据成功！");
     } catch (IOException ex) {
         getLogger().severe("保存玩家数据失败！");
     }
@@ -159,14 +160,64 @@ public void saveAllStats() {
     String action = args[0].toLowerCase();
 
     return switch (action) {
+        case "clean_all" -> {
+                // 检查权限
+                if (!player.hasPermission("scoreboard.admin")) {
+                    player.sendMessage("§c你没有权限执行此命令！");
+                    yield true;
+                }
+                
+                // 遍历所有玩家的统计数据并重置
+                int resetCount = 0;
+                for (PlayerStats stats : playerStatsMap.values()) {
+                    stats.clean_all();
+                    resetCount++;
+                }
+                
+                player.sendMessage("§a已重置 " + resetCount + " 名玩家的所有计分数据！");
+                yield true;
+            }
+        case "open" -> handleopen();
+        case "close" -> handleclose();
         case "on" -> handleOn(player);
         case "off" -> handleOff(player);
         case "rule" -> handleRule(player);
+        case "rule_kill" ->handlerule_kill(player);
+        case "rule_damage" -> handlerule_damage(player);
+        case "rule_item" -> handlerule_item(player);
         default -> {
-            player.sendMessage("§c未知参数！使用: on, off, rule");
+            player.sendMessage("§c未知参数！使用: on, off, rule, rule_kill, rule_damage, rule_item");
             yield true;
         }
     };
+    
+    }
+    private boolean handleopen() {
+        tableType.toggleEnabled(true); // 立即刷新
+        return true;
+    }
+
+    private boolean handleclose() {
+        tableType.toggleEnabled(false); // 立即隐藏
+        return true;
+    }
+    private boolean handlerule_kill(Player player) {
+        player.sendMessage("§e§l=== 击杀计分表 ===");
+        player.sendMessage("§c杀一个你就知道了！");
+        player.sendMessage("§a===================");
+        return true;
+    }
+    private boolean handlerule_damage(Player player) {
+        player.sendMessage("§e§l=== 伤害计分表 ===");
+        player.sendMessage("§造成的绝对伤害！");
+        player.sendMessage("§a===================");
+        return true;
+    }
+    private boolean handlerule_item(Player player) {
+        player.sendMessage("§e§l=== 伤害计分表 ===");
+        player.sendMessage("§计分的会播报的，拿就知道了！");
+        player.sendMessage("§a===================");
+        return true;
     }
 
     private boolean handleOn(Player player) {
@@ -186,12 +237,12 @@ public void saveAllStats() {
     }
 
     private boolean handleRule(Player player) {
-        player.sendMessage("§e§l=== 计分规则 ===");
-        player.sendMessage("§c伤害分: §f" + getConfig().getDouble("scores.damage_weight", 1.0) + " 分/点");
-        player.sendMessage("§e击杀分: §f" + getConfig().getInt("scores.kill_weight", 10) + " 分/次");
-        player.sendMessage("§b物品分: §f" + getConfig().getInt("scores.item_weight", 5) + " 分/个");
-        player.sendMessage("§6总分 = 伤害×权重1 + 击杀×权重2 + 物品×权重3");
-        player.sendMessage("§a================");
+        player.sendMessage("§e§l=== 计分表简介 ===");
+        player.sendMessage("§c第一项伤害分: §f" + "玩家造成伤害时获得" + "具体使用rule_damage命令查看");
+        player.sendMessage("§e第二项击杀分: §f" + "玩家造成击杀时获得" + "具体使用rule_kill命令查看");
+        player.sendMessage("§b第三项物品分: §f" + "玩家获取物品时获得" + "具体使用rule_item命令查看");
+        player.sendMessage("§6总分 = 伤害 + 击杀 + 物品");
+        player.sendMessage("§a===================");
         return true;
     }
     // 在 MobItemScorerPlugin.java 中添加这个方法

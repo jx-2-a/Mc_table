@@ -1,8 +1,0 @@
-name: score_board
-main: com.jinxi.scoreboard.MobItemScorerPlugin
-version: 1.0
-api-version: 1.21
-commands:
-  score_table:
-    description: 控制个人计分板
-    usage: /score_table <on|off|rule>

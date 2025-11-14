@@ -23,13 +23,22 @@ public class PlayerStats {
     public void addTempItem(int amount) {
         this.tempItems += amount;
     }
+    public void clean_all() {
+        this.tempDamage = 0;
+        this.tempKills = 0;
+        this.tempItems = 0;
+        this.damageScore = 0;
+        this.killScore = 0;
+        this.itemScore = 0;
+        this.totalScore = 0;
+    }
     
     // 提交暂存数据到总数据
     public void commitTempData() {
         this.damageScore += tempDamage;
         this.killScore += tempKills;
         this.itemScore += tempItems;
-        
+        recalcTotal();
         // 归零暂存数据
         resetTempData();
     }

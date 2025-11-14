@@ -88,11 +88,13 @@ boss_names:
   CAVE_SPIDER: "洞穴蜘蛛"
   SILVERFISH: "银鱼"
 Material_value_map:
-  IRON_INGOT: 1           # 铁锭：1分
   GOLD_INGOT: 10          # 金锭：10分
-  DIAMOND: 50           # 钻石：50分
+  DIAMOND: 50             # 钻石：50分
+  
 Material_value_name:
   IRON_INGOT: "铁锭"
   GOLD_INGOT: "金锭"
   DIAMOND: "钻石"
+  RAW_IRON: "粗铁"
+  RAW_GOLD: "粗金"
   
